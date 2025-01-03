@@ -9,15 +9,15 @@
 
 # 형변환
 # 1. 정수혀으로 변환 
-print(int("10"))
-print(int("10"), type(int("10")))
+#print(int("10"))
+#print(int("10"), type(int("10")))
 
 #print(int("10.9"))
 #print(int("10.9"), type(int("10.9")))
 
 # 2. 실수형으로 변환
-print(float("11.2"), type(float("11.2")))
-print(float("10"), type(float("10")))
+#print(float("11.2"), type(float("11.2")))
+#print(float("10"), type(float("10")))
 
 # 3. 형변환 안되는 예시
 # print(int ("name")) # 숫자 기호가 아닌 문자열을 정수로 변환하려 할 때
@@ -43,9 +43,9 @@ print(float("10"), type(float("10")))
 #age = input("나이를 입력하세요. ")
 #print ("안녕하세요! " + name + "님 나이는 " + age + "입니다!")
 
-name = input("이름을 입력하세요. ")
-old = input("태어난 년도를 입력하세요. ")
-age = input("올해 년도를 입력하세요. ")
-total = str(age) - str(old)
-avg = total + 1
-print ("올해는 " + age + "년, "  + name + "님의 나이는 " + svg + "입니다!")
+#1name = input("이름을 입력하세요. ")
+#old = int(input("태어난 년도를 입력하세요. "))
+#age = int(input("올해 년도를 입력하세요. "))
+#total = age - old
+#avg = total + 1
+#print(f"올해는 {age}년, {name}님의 나이는 {avg}세입니다!")
