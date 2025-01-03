@@ -65,3 +65,9 @@ print (bin(10)) # 10진수 to 2진수
 print (hex(10)) # 10진수 to 16진수
 print (type(bin(10))) # 문자열
 print (type(hex(10))) # 문자열열
+
+# 1.1py 파트
+print (ord("0")) # ord() : 주어진 문자를 해당하는 유니코드 정수값으로 변환
+print (ord("A")) 
+print (chr(46)) # chr() : 주어진 유니코드 정수값을 문자로 변환
+print (chr(65))
