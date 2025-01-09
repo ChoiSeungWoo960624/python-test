@@ -17,21 +17,21 @@ try:
         if host == '추가':
             new_it = input("추가할 음료 이름을 입력하세요: ")
             vending_machine.append(new_it)
-            grouped_it = {item: vending_machine.count(item) for item in set(vending_machine)}
-            grouped_display = [f"{item}({count})" for item, count in grouped_it.items()]
-            print(f"{new_it} 추가되었습니다. 현재 재고: {', '.join(grouped_display)}")
+            gr_it = {item: vending_machine.count(item) for item in set(vending_machine)}
+            gr_di = [f"{item}({count})" for item, count in gr_it.items()]
+            print(f"{new_it} 추가되었습니다. 현재 재고: {', '.join(gr_di)}")
         
         elif host == '삭제':
-            delete_item = input("삭제할 음료 이름을 입력하세요: ")
-            if delete_item in vending_machine:
-                vending_machine.remove(delete_item)
-                print(f"{delete_item} 삭제되었습니다. 현재 재고: {vending_machine}")
+            del_it = input("삭제할 음료 이름을 입력하세요: ")
+            if del_it in vending_machine:
+                vending_machine.remove(del_it)
+                print(f"{del_it} 삭제되었습니다. 현재 재고: {vending_machine}")
             else:
                 print("삭제하려는 음료가 존재하지 않습니다.")
         else:
-            print("잘못된 선택입니다.")
+            print("잘못 선택하셨습니다.")
     else:
-        print("잘못된 값입니다. 다시 입력해주세요.")
+        print("잘못 입력하셨습니다. 다시 확인해주세요.")
 except ValueError:
-    print("숫자를 입력해주세요.")
+    print("잘못 입력하셨습니다. 숫자로 입력해주세요.")
 
