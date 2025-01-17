@@ -49,21 +49,28 @@ print(name1.text.strip())
 from bs4 import BeautifulSoup
 import requests
 
-html_url = "https://m.stock.naver.com/worldstock/stock/KO/total"
+html_url = "https://finance.naver.com/item/main.naver?code=005930"
 res = requests.get(html_url)
 soup = BeautifulSoup(res.text, "html.parser")
 
-#주식 이름
-title = soup.select_one("span.GraphMain_name__cEsOs")
-all_nav = soup.select("div > span")
-print("제목 : ", title.text.strip())
+#주식명
+title = soup.select_one("h2")
+print (f"주식명 : {title.text}")
+
 
 #가격
-mone = soup.select_one(".GraphMain_price__H72B2")
-all_nav = soup.select("strong > span")
-print("가격 : ", mone.text.strip())
+mone = soup.select_one(".no_today .no_up .blind") 
+#.no_today .no_up 했을 때 숫자가 중복이 일어나는건 .no_up출력시 중복 하위 요소의 텍스트(.blind)가 합쳐져서그렇다. 
+print(f"가격 : {mone.text}원")
 
-#전월 대비 
-previous_month = soup.select_one(".VGap_gap__LQYpL2")
-all_nav = soup.select("div > span")
-print("전월 대비 : ", previous_month.text.strip())
+'''
+#전일 대비 //구현을 못하겠음
+rising_day = soup.select_one(".rate_info .today .no_exday")
+mount_day = soup.select_one(".no_up .ico up .blind")
+print(f"{rising_day} 전월 대비 : {mount_day}")
+'''
+
+#그래프 
+graph_today = soup.select_one("#img_chart_area")
+if graph_today:
+    print(f"그래프: {graph_today['src']}")
