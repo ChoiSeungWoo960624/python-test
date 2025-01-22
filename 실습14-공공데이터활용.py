@@ -10,6 +10,11 @@ df = pd.read_csv(file_name, encoding="cp949")
 df.columns = df.columns.str.strip() #df.columns 열이름 나타내는 index
 #print(df.columns)
 
+# 공백 지우기기
+df['구분'] = df['구분'].str.strip()
+df['운동기구 기종명'] = df['운동기구 기종명'].str.strip()
+
+
 # 공원별 총 운동기구 설치 수
 park_eq = df.groupby('구분')['운동기구 수량'].sum().reset_index()
 #print("공원별 총 운동기구 설치 수:")
@@ -25,12 +30,13 @@ code_eq = df.groupby('관리기관')['운동기구 수량'].sum().reset_index()
 #print("\n관리기관별 총 운동기구 설치 수:")
 #print(code_eq)
 
-# 특정 공원 데이터 필터링 (예: 중랑캠핑숲)
+
+# 특정 공원 데이터 필터링 (예: 중랑캠핑숲) # 공백 지우면 나옴
 sp_park = df[df['구분'] == '중랑캠핑숲']
 print("\n특정 공원 데이터 (중랑캠핑숲):")
 print(sp_park)
 
-# 특정 운동기구 종류 데이터 필터링 (예: 스텝사이클)
+# 특정 운동기구 종류 데이터 필터링 (예: 스텝사이클) #공백 지우면 나옴
 sp_eq = df[df['운동기구 기종명'] == '스텝사이클']
 print("\n특정 운동기구 종류 데이터 (스텝사이클):")
 print(sp_eq)
