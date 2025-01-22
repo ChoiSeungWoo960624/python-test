@@ -91,6 +91,14 @@ for bar in bars:
     plt.text( bar.get_x() + bar.get_width() / 2, bar.get_height() +0.5, ["i", "helo", "me"], ha="center", va="top", color="black",)
 plt.xticks(categories, ["2023", "2024", "2025"])
 
+"""
+for i, bar in enumerate(bars):
+    plt.text( bar.get_x() + bar.get_width() / 2, bar.get_height() +0.5, x[i], ha="center", va="top", color="black",)
+plt.xticks(categories, ["2023", "2024", "2025"])
+만약 그래프 마다 각자 이름을 넣고 싶다면 이렇게
+x = i
+"""
+
 #기준선
 plt.axhline(x=values[0], linestyle="--")
 
