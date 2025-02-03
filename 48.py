@@ -29,7 +29,7 @@ import  pandas as pd
 # print(series.shape) # 길이
 
 # data = ('민지', '여', False)
-# member = pd.Series(data, insex=["이름", "성별", "결혼여부"])
+# member = pd.Series(data, insex=["이름", "", "결혼여부"])
 # print(member)
 # print(member["이름"])
 # print(member[["성별", "결혼여부"]])
