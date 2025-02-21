@@ -102,55 +102,55 @@ cv2.destroyAllWindows()
 # cv2.destroyAllWindows()
 
 
-# #캠 이용 얼굴 눈 감지
-# # 얼굴
-# face_cascade = cv2.CascadeClassifier(
-#     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-# )
-# # 눈
-# eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_eye.xml")
+#캠 이용 얼굴 눈 감지
+# 얼굴
+face_cascade = cv2.CascadeClassifier(
+    cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+)
+# 눈
+eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_eye.xml")
 
-# cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0)
 
-# if not cap.isOpened():
-#     print("웹캠이 없습니다")
-#     exit()
+if not cap.isOpened():
+    print("웹캠이 없습니다")
+    exit()
 
 
-# while True:
-#     ret, frame = cap.read()
-#     if not ret:
-#         break
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
 
-#     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-#     # 얼굴탐지
-#     faces = face_cascade.detectMultiScale(
-#         gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30)
-#     )
+    # 얼굴탐지
+    faces = face_cascade.detectMultiScale(
+        gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30)
+    )
 
-#     # 얼굴
-#     for x, y, w, h in faces:
-#         # 얼굴에 사각형
-#         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    # 얼굴
+    for x, y, w, h in faces:
+        # 얼굴에 사각형
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-#         # 눈탐지
-#         # 얼굴roi
-#         face_roi = gray[y : y + h, x : x + w]
-#         eyes = eye_cascade.detectMultiScale(
-#             face_roi, scaleFactor=1.1, minNeighbors=7, minSize=(15, 15)
-#         )
+        # 눈탐지
+        # 얼굴roi
+        face_roi = gray[y : y + h, x : x + w]
+        eyes = eye_cascade.detectMultiScale(
+            face_roi, scaleFactor=1.1, minNeighbors=7, minSize=(15, 15)
+        )
 
-#         for ex, ey, ew, eh in eyes:
-#             cv2.rectangle(
-#                 frame, (x + ex, y + ey), (x + ex + ew, y + ey + eh), (255, 0, 0), 2
-#             )
+        for ex, ey, ew, eh in eyes:
+            cv2.rectangle(
+                frame, (x + ex, y + ey), (x + ex + ew, y + ey + eh), (255, 0, 0), 2
+            )
 
-#     cv2.imshow("face", frame)
+    cv2.imshow("face", frame)
 
-#     # 종료
-#     if cv2.waitKey(1) & 0xFF == ord("q"):
-#         break
+    # 종료
+    if cv2.waitKey(1) & 0xFF == ord("q"):
+        break
 
-# cap.release()
-# cv2.destroyAllWindows()
+cap.release()
+cv2.destroyAllWindows()

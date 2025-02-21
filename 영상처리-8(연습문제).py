@@ -37,3 +37,39 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 plt.show()
+
+"""
+솔루션
+import cv2
+import numpy as np
+
+image = cv2.imread("green.jpg")
+
+hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+lower = np.array([50, 100, 100])
+upper = np.array([70, 255, 255])
+
+mask = cv2.inRange(hsv, lower, upper)
+
+# result = cv2.bitwise_and(image, image, mask=mask)
+
+contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+count = 0
+for contour in contours:
+    # contourArea : 위에서 검출한 윤곽선의 면적을 계산하는 함수. 반환값은 면적을 float형식
+    area = cv2.contourArea(contour)
+    if area > 100:  # 작은 노이즈 제거
+        count += 1
+        x, y, w, h = cv2.boundingRect(
+            contour
+        )  # 객체를 감싸는 가장 작은 축에 정렬된 사각형
+        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+print(f"검출된 초록색은 : {count}개")
+cv2.imshow("green", image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+"""
